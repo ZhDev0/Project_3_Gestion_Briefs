@@ -52,6 +52,8 @@ Route::post('/edit_task/{id}', [TaskController::class, 'updateTask'])->name('tas
 Route::get('/edit_task/{id}', [TaskController::class, 'editTask'])->name('task.edit');
 // Route::get('/gestion_briefs/{    ', [TaskController::class, 'getBriefsToTask'])->name('getbriefs.task');
 
-
+Route::get('/asdasd', function() {
+    return view('assigner');
+});
 
 

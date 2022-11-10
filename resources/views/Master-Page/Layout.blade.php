@@ -98,6 +98,7 @@
         </marquee>
         {{-- <marquee behavior="scroll" direction="right" scrollamount="12"></marquee> --}}
     </div>
+
     <div class="container">
         @yield('content')
     </div>
