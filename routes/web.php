@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\ApprenantBriefsController;
 use App\Http\Controllers\ApprenantController;
 use App\Http\Controllers\BriefController;
 use App\Http\Controllers\PromotionController;
 use App\Http\Controllers\TaskController;
+use App\Models\ApprenantBriefs;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -52,8 +54,6 @@ Route::post('/edit_task/{id}', [TaskController::class, 'updateTask'])->name('tas
 Route::get('/edit_task/{id}', [TaskController::class, 'editTask'])->name('task.edit');
 // Route::get('/gestion_briefs/{    ', [TaskController::class, 'getBriefsToTask'])->name('getbriefs.task');
 
-Route::get('/asdasd', function() {
-    return view('assigner');
-});
+Route::get('/assigner', [ApprenantBriefsController::class, 'index']);
 
 

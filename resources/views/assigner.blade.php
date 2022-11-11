@@ -6,7 +6,15 @@
 @endsection
 
 @section('style')
-a {
+a{
+    text-decoration: none;
+    font-size: 35px;
+}
+.a:hover {
+    background:lightgrey;
+    transition: .3s ease-in-out;
+}
+.a {
     text-decoration: none;
     font-size: 30px;
     border: 1px solid black;
@@ -17,7 +25,7 @@ a {
 }
     .search-area {
         display:flex;
-        justify-content: center;
+        justify-content: end;
         align-items:center;
     }
     main {
@@ -26,7 +34,7 @@ a {
         align-items:center;
         {{-- background: yellow; --}}
     }
-    main label, a {
+    main label, .a {
         margin: 15px;
     }
     main label {
@@ -35,18 +43,22 @@ a {
 @endsection
 
 @section('content')
-    <div class="row my-4">
+    <div class="row my-5">
         <div class="col-md-12">
             <div class="search-area">
-                <input type="text" placeholder="Chercher Apprenant">
+                <input type="text" class="form-control w-25" placeholder="Chercher Apprenant">
             </div>
+            @foreach ($infos as $value)
             <main>
-                <label for="">Test</label>
-                <a href="#">+</a>
-                <a href="#">-</a>
+                <label for="">{{ $value->nom." ".$value->prenom }}</label>
+                <a class="a" href="#">+</a>
+                <a class="a" href="#">-</a>
             </main>
+            @endforeach
         </div>
     </div>
+    {{-- <input type="hidden" value="{{  }}"> --}}
+    <a href="/gestion_briefs" class="text-success d-flex justify-content-center">Retourner</a>
 @endsection
 
 

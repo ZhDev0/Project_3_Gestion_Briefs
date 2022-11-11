@@ -79,7 +79,7 @@
                         <div class="text-dark lead">{{ Str::limit($value->nom_du_brief, '26') }}</div>
                         <a href="/delete_brief/{{ $value->id }}" class="text-danger">Delete</a>
                         <a href="/gestion_brief/{{ $value->id }}" class="text-success">Update</a>
-                        <a href="###" class="text-primary">assign</a>
+                        <a href="/assigner" class="text-primary">assign</a>
                         <a href="/add_task" class="text-info">+ Tasks</a>
                     </div>
                 @endforeach
