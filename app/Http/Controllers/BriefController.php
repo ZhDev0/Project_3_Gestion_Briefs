@@ -72,4 +72,6 @@ class BriefController extends Controller
         ]);
         return back()->with('brief_updated', 'Briefs Has Been Updated Successfully chedddiiiiiiid!!');
     }
+
+
 }
