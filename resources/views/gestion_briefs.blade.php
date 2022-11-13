@@ -2,7 +2,7 @@
 
 
 @section('title')
-    Briefs Page
+    Brief's Page
 @endsection
 
 
@@ -65,21 +65,31 @@
                     <li><a href="{{ route('briefs.get') }}">Briefs</a></li>
                 </ul>
             </nav>
+            @if (Session::has('brief_deleted'))
+                <div class="alert alert-danger">
+                    {{ Session::get('brief_deleted') }}
+                </div>
+            @elseif(Session::has('brief_updated'))
+                <div class="alert alert-danger">
+                    {{ Session::get('brief_updated') }}
+                </div>
+            @endif
             <div class="middle-nav">
                 <ul>
-                    <li><a href="{{ route('brief.add') }}" class="btn btn-primary mt-3">Ajouter Brief</a></li>
+                    <li><a href="{{ route('brief.add') }}" class="btn btn-primary mt-3">Add Brief</a></li>
                 </ul>
                 <form action="" method="POST">
-                    <input type="text" class="form-control" placeholder="Chercher Brief">
+                    <input type="text" class="form-control" placeholder="Search Here">
                 </form>
             </div>
+
             <main>
                 @foreach ($briefs as $value)
                     <div class="main-content">
                         <div class="text-dark lead">{{ Str::limit($value->nom_du_brief, '26') }}</div>
                         <a href="/delete_brief/{{ $value->id }}" class="text-danger">Delete</a>
                         <a href="/gestion_brief/{{ $value->id }}" class="text-success">Update</a>
-                        <a href="/assigner/{{ $value->id }}" class="text-primary">assign</a>
+                        <a href="/assigner/{{ $value->id }}" class="text-primary">Assign</a>
                         <a href="/add_task" class="text-info">+ Tasks</a>
                     </div>
                 @endforeach

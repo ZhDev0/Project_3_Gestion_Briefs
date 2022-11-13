@@ -2,7 +2,7 @@
 
 
 @section('title')
-    Edit Task
+    Update Task
 @endsection
 
 
@@ -41,35 +41,35 @@
                     <form action="/edit_task/{{ $tasko->id }}" method="POST">
                         @csrf
                         <div class="form-group">
-                            <label for="nom_task">Nom de Task</label>
+                            <label for="nom_task">Task's Name</label>
                             <input type="text" value="{{ $tasko->nom_task }}" name="nom_task" id="nom_task" class="form-control">
                         </div>
                         @error('nom_task')
                             <div class="alert alert-danger mt-2">{{ $message }}</div>
                         @enderror
                         <div class="form-group">
-                            <label for="debut_task">debut task</label>
+                            <label for="debut_task">Task Start Date</label>
                             <input value="{{ $tasko->debut_task }}" type="datetime-local" name="debut_task" id="debut_task" class="form-control">
                         </div>
                         @error('debut_task')
                             <div class="alert alert-danger mt-2">{{ $message }}</div>
                         @enderror
                         <div class="form-group">
-                            <label for="fin_task">fin task</label>
+                            <label for="fin_task">Task End Date</label>
                             <input value="{{ $tasko->fin_task }}" type="datetime-local" name="fin_task" id="fin_task" class="form-control">
                         </div>
                         @error('fin_task')
                             <div class="alert alert-danger mt-2">{{ $message }}</div>
                         @enderror
                         <div class="form-group">
-                            <label for="description">description</label>
+                            <label for="description">Description</label>
                             <input value="{{ $tasko->description }}" type="text" name="description" id="description" class="form-control">
                         </div>
                         @error('description')
                             <div class="alert alert-danger mt-2">{{ $message }}</div>
                         @enderror
                         <div class="form-group">
-                            <label for="brief_id">brief's Number</label>
+                            <label for="brief_id">Choose a Brief</label>
                             <input value="{{ $tasko->brief_id }}" type="text" name="brief_id" id="brief_id" class="form-control">
                         </div>
                         @error('brief_id')

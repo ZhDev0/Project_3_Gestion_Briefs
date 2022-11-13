@@ -30,7 +30,7 @@
         <div class="col-md-6 offset-3">
             <div class="card">
                 <div class="card-header bg-dark text-white">
-                    <span class="material-icons">new_label</span>&nbsp;Add Apprenant
+                    <span class="material-icons">new_label</span>&nbsp;Add Student
                 </div>
                 <div class="card-body">
                     @if (Session::has('apprenant_created'))
@@ -41,34 +41,34 @@
                     <form action="{{ route('apprenant.submit') }}" method="POST">
                         @csrf
                         <div class="form-group">
-                            <label for="prenom">Prenom</label>
+                            <label for="prenom">Last Name <span style="color:red;">*</span></label>
                             <input type="text" name="prenom" id="prenom" class="form-control">
                         </div>
                         @error('prenom')
                             <div class="alert alert-danger mt-2">{{ $message }}</div>
                         @enderror
                         <div class="form-group">
-                            <label for="nom">nom</label>
+                            <label for="nom">First Name <span style="color:red;">*</span></label>
                             <input type="text" name="nom" id="nom" class="form-control">
                         </div>
                         @error('nom')
                             <div class="alert alert-danger mt-2">{{ $message }}</div>
                         @enderror
                         <div class="form-group">
-                            <label for="email">email</label>
+                            <label for="email">Email <span style="color:red;">*</span></label>
                             <input type="text" name="email" id="email" class="form-control">
                         </div>
                         @error('email')
                             <div class="alert alert-danger mt-2">{{ $message }}</div>
                         @enderror
                         <div class="form-group">
-                            <label for="id_promotion">Promotion's Number</label>
+                            <label for="id_promotion">Choose a Promotion <span style="color:red;">*</span></label>
                             <input type="text" name="id_promotion" id="id_promotion" class="form-control">
                         </div>
                         @error('id_promotion')
                             <div class="alert alert-danger mt-2">{{ $message }}</div>
                         @enderror
-                        <button type="submit" class="btn mt-3 btn-primary w-100">Send</button>
+                        <button type="submit" class="btn mt-3 btn-primary w-100">Add</button>
                         <a href="{{ route('promotion.get') }}" class="btn btn-dark w-100 mt-2">Back</a>
                     </form>
                 </div>

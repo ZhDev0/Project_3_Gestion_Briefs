@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Brief;
+use App\Models\Promotion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -70,7 +71,7 @@ class BriefController extends Controller
             'Date_heure_livraison' => $req->input('Date_heure_livraison'),
             'Date_heure_recuperation' => $req->input('Date_heure_recuperation')
         ]);
-        return back()->with('brief_updated', 'Briefs Has Been Updated Successfully chedddiiiiiiid!!');
+        return back()->with('brief_updated', 'Briefs Has Been Updated Successfully!!');
     }
 
 

@@ -22,13 +22,19 @@
     <style>
         body {
             font-family: 'Nunito', sans-serif;
+            background-image: url('{{ asset('img/5570863.jpg') }}');
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            height: 100vh;
+            /* color: white; */
         }
     </style>
     <style>
         .marquee {
             height: calc(100vh - 95vh);
             background: black;
-            color: white;
+            /* color: white; */
         }
 
         .link-container {
@@ -214,6 +220,9 @@
             document.getElementById('modal').style.display = 'none'
         })
     </script>
+    <script src="{{ asset('js/Search.js') }}"></script>
+    <script src="{{ asset('js/SearchA.js') }}"></script>
+
 </body>
 
 </html>

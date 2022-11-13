@@ -30,7 +30,7 @@
         <div class="col-md-6 offset-3">
             <div class="card">
                 <div class="card-header bg-dark text-white">
-                    <span class="material-icons">new_label</span>&nbsp;Add Promotion
+                    <span class="material-icons">new_label</span>&nbsp;Add Task
                 </div>
                 <div class="card-body">
                     @if (Session::has('task_created'))
@@ -41,21 +41,21 @@
                     <form action="{{ route('task.submit') }}" method="POST">
                         @csrf
                         <div class="form-group">
-                            <label for="nom_task">nom de task</label>
+                            <label for="nom_task">Task's Name</label>
                             <input type="text" name="nom_task" id="nom_task" class="form-control">
                         </div>
                         @error('nom_task')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                         <div class="form-group">
-                            <label for="debut_task">Date Debut de Task</label>
+                            <label for="debut_task">Task Start Date</label>
                             <input type="datetime-local" name="debut_task" id="debut_task" class="form-control">
                         </div>
                         @error('debut_task')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                         <div class="form-group">
-                            <label for="fin_task">Date Fin de Task</label>
+                            <label for="fin_task">Task End Date</label>
                             <input type="datetime-local" name="fin_task" id="fin_task" class="form-control">
                         </div>
                         @error('fin_task')
@@ -69,7 +69,7 @@
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                         <div class="form-group">
-                            <label for="brief_number">Brief's Number</label>
+                            <label for="brief_number">Choose a Brief</label>
                             <input type="text" name="brief_number" id="brief_number" class="form-control">
                         </div>
                         @error('brief_number')
@@ -78,7 +78,7 @@
 
                         <input type="hidden" name="brief_id">
 
-                        <button type="submit" class="btn mt-3 btn-primary w-100">Send</button>
+                        <button type="submit" class="btn mt-3 btn-primary w-100">Add</button>
                         <a href="/gestion_briefs" class="btn btn-dark w-100 mt-2">Back</a>
                     </form>
                 </div>

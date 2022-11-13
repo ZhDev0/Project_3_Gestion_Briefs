@@ -16,19 +16,20 @@ class ApprenantBriefsController extends Controller
         $brieff = Brief::find($id);
         return view('assigner', compact('infos','brieff'));
     }
+
     public function store(Request $request)
     {
         $apprenatBrief = new ApprenantBriefs();
         $apprenatBrief->apprenant_id = $request->apprenant_id;
         $apprenatBrief->brief_id = $request->brief_id;
         $apprenatBrief->save();
-        return back();
+        return back()->with('Stored', 'Assignement Has Been Effected SuccessFully !!');
     }
 
     public function destroy($id)
     {
         $apprenatBrief = ApprenantBriefs::find($id);
         $apprenatBrief->delete();
-        return back();
+        return back()->with('UnStored', 'Assignement Has Been Removed SuccessFully !!');
     }
 }

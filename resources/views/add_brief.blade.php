@@ -48,20 +48,20 @@
                             <div class="alert alert-danger mt-2">{{ $message }}</div>
                         @enderror
                         <div class="form-group">
-                            <label for="Date_heure_livraison">Date_heure_livraison</label>
+                            <label for="Date_heure_livraison">Delivery-Date-Time</label>
                             <input type="datetime-local" name="Date_heure_livraison" id="Date_heure_livraison" class="form-control">
                         </div>
                         @error('Date_heure_livraison')
                             <div class="alert alert-danger mt-2">{{ $message }}</div>
                         @enderror
                         <div class="form-group">
-                            <label for="Date_heure_recuperation">Date_heure_recuperation</label>
+                            <label for="Date_heure_recuperation">Recovery-Date-Time</label>
                             <input type="datetime-local" name="Date_heure_recuperation" id="Date_heure_recuperation" class="form-control">
                         </div>
                         @error('Date_heure_recuperation')
                             <div class="alert alert-danger mt-2">{{ $message }}</div>
                         @enderror
-                        <button type="submit" class="btn mt-3 btn-primary w-100">Send</button>
+                        <button type="submit" class="btn mt-3 btn-primary w-100">Add</button>
                         <a href="{{ route('briefs.get') }}" class="btn btn-dark w-100 mt-2">Back</a>
                     </form>
                 </div>

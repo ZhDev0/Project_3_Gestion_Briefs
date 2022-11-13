@@ -2,7 +2,7 @@
 
 
 @section('title')
-    Add Brief
+    Brief / Task Page
 @endsection
 
 @section('style')
@@ -51,7 +51,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="text-header d-flex justify-content-center align-items-center my-2">
-                <h1>Modifier brief</h1>
+                <h1>Update Brief</h1>
             </div>
             @if (Session::has('brief_updated'))
                 <div class="alert alert-success">
@@ -62,29 +62,34 @@
                 @csrf
                 <div class="form-content">
                     <div class="form-group">
-                        <label for="nom_du_brief">Nom du brief</label>
+                        <label for="nom_du_brief">Brief's Name</label>
                         <input type="text" id="nom_du_brief" name="nom_du_brief" class="form-control" placeholder="brief X" value="{{ $brief->nom_du_brief }}">
                     </div>
                     <input type="hidden" value="{{ $brief->id }}">
                     <div class="form-group">
-                        <label for="Date_heure_livraison">Date/heure de livraison</label>
+                        <label for="Date_heure_livraison">Delivery-Date-Time</label>
                         <input value="{{ $brief->Date_heure_livraison }}" type="datetime-local" id="Date_heure_livraison" name="Date_heure_livraison" class="form-control"
                             placeholder="25/01/2022">
                     </div>
                     <div class="form-group">
-                        <label for="Date_heure_recuperation">Date/heure de recuperation</label>
+                        <label for="Date_heure_recuperation">Recovery-Date-Time</label>
                         <input value="{{ $brief->Date_heure_recuperation }}" type="datetime-local" id="Date_heure_recuperation" name="Date_heure_recuperation" class="form-control"
                             placeholder="30/01/2022">
                     </div>
                 </div>
-                <input class="envoyer" type="submit" value="Envoyer">
+                <input class="envoyer" type="submit" value="Update">
             </form>
+            @if (Session::has('task_deleted'))
+<div class="alert alert-danger">
+    {{ Session::get('task_deleted') }}
+</div>
+            @endif
             <main>
                 @foreach ($brief->tasks as $value)
                     <div class="main-content">
                         <a class="text-dark m-3 h5">{{ $value->nom_task }}</a>
-                        <a href="/delete_task/{{ $value->id }}" class="text-danger">Supprimer</a>
-                        <a href="/edit_task/{{ $value->id }}" class="text-success">Modifier</a>
+                        <a href="/delete_task/{{ $value->id }}" class="text-danger">Delete</a>
+                        <a href="/edit_task/{{ $value->id }}" class="text-success">Update</a>
                     </div>
                 @endforeach
             </main>
@@ -92,9 +97,9 @@
             {{-- <div class="d-flex justify-content-center align-items-center">
                 {{ $tasks->links() }}
             </div> --}}
-            <a href="/add_task/" class="m-3 h1 d-flex justify-content-center align-items-center">+ Ajouter Task</a>
+            <a href="/add_task/" class="m-3 h1 d-flex justify-content-center align-items-center">+ Add Task</a>
             <a href="/gestion_briefs"
-                class=" text-success m-3 d-flex justify-content-center align-items-center">Retourner</a>
+                class=" text-success m-3 d-flex justify-content-center align-items-center">Back Home</a>
         </div>
     </div>
 @endsection

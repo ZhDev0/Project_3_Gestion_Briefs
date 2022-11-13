@@ -2,7 +2,7 @@
 
 
 @section('title')
-    Promotions Page
+    Promotion's Page
 @endsection
 
 
@@ -49,7 +49,7 @@
     main .main-content:hover {
         background: #eee;
     }
-    .main-content a:last-child {
+    .main-content a {
         margin-left: 25px;
     }
 @endsection
@@ -65,19 +65,26 @@
                     <li><a href="{{ route('briefs.get') }}" class="btn btn-warning w-100">Briefs</a></li>
                 </ul>
             </nav>
+            @if (Session::has('promotion_deleted'))
+                <div class="alert alert-danger">
+                    {{ Session::get('promotion_deleted') }}
+                </div>
+            @endif
             <div class="middle-nav">
                 <ul>
-                    <li><a href="{{ route('promotion.add') }}" class="btn btn-primary mt-3">Ajouter Promotion</a></li>
+                    <li><a href="{{ route('promotion.add') }}" class="btn btn-primary mt-3">Add Promotion</a></li>
                 </ul>
-                <form action="" method="POST">
-                    <input type="text" class="form-control" placeholder="Chercher Promotion">
-                </form>
+                <div class="form-group">
+                    <input type="text" id="search" name="search" class="form-control" placeholder="Search Here">
+                </div>
             </div>
-            <main>
+
+            <main id="tbody">
                 @foreach ($promotion as $value)
                     <div class="main-content">
                         <a href="/gestion_apprenant/{{ $value->id }}" class="btn btn-success">{{ $value->nom_promotion }}</a>
-                        <a href="/delete_promotion/{{ $value->id }}" class="text-danger">Supprimer</a>
+                        <a href="/delete_promotion/{{ $value->id }}" class="text-danger">Delete</a>
+                        <a href="/edit_promotion/{{ $value->id }}" class="text-success">Update</a>
                     </div>
                 @endforeach
             </main>

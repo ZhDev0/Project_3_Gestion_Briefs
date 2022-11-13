@@ -31,6 +31,8 @@ Route::get('/', [PromotionController::class, 'getPromotions'])->name('promotion.
 Route::get('/add_promotion', [PromotionController::class, 'addPromotion'])->name('promotion.add');
 Route::post('/add_promotion', [PromotionController::class, 'submitPromotion'])->name('promotion.submit');
 Route::get('/delete_promotion/{id}', [PromotionController::class, 'deletePromotion'])->name('promotion.delete');
+Route::get('/edit_promotion/{id}', [PromotionController::class, 'editPromotion'])->name('promotion.edit');
+Route::post('/edit_promotion/{id}', [PromotionController::class, 'updatePromotion'])->name('promotion.update');
 Route::get('/gestion_briefs', [BriefController::class, 'index'])->name('brief.index');
 Route::get('/gestion_briefs', [BriefController::class, 'getBriefs'])->name('briefs.get');
 Route::post('/gestion_briefs', [BriefController::class, 'submitbrief'])->name('brief.submit');
@@ -43,6 +45,7 @@ Route::get('/gestion_apprenant/{id?}', [ApprenantController::class, 'getApprenan
 Route::post('/gestion_apprenant', [ApprenantController::class, 'submitApprenant'])->name('apprenant.submit');
 Route::get('/add_apprenant', [ApprenantController::class, 'addApprenant'])->name('apprenant.add');
 Route::get('/delete_apprenant/{id}', [ApprenantController::class, 'deleteApprenant'])->name('apprenant.delete');
+Route::get('/edit_apprenant/{id}', [ApprenantController::class, 'editApprenant'])->name('apprenant.edit');
 Route::post('/edit_apprenant/{id}', [ApprenantController::class, 'updateApprenant'])->name('apprenant.update');
 Route::get('/gestion_task', [TaskController::class, 'index'])->name('task.index');
 Route::get('/gestion_task/{id}', [TaskController::class, 'getTask'])->name('task.get');
@@ -57,6 +60,9 @@ Route::get('/edit_task/{id}', [TaskController::class, 'editTask'])->name('task.e
 Route::get('/assigner/{id}', [ApprenantBriefsController::class, 'index']);
 
 
-Route::post('/assigner', [ApprenantBriefsController::class, 'store']);
+Route::post('/assigner', [ApprenantBriefsController::class, 'store'])->name('store');
+// Route::get('/assigner/{id}', [ApprenantBriefsController::class, 'destroy'])->name('unstore');
 
 
+Route::get('/search', [PromotionController::class, 'search'])->name('promotion.search');
+Route::get('/searcha', [ApprenantController::class, 'searcha'])->name('promotion.searchA');

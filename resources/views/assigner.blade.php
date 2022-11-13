@@ -2,7 +2,7 @@
 
 
 @section('title')
-    Assigner Page
+    Assign Student Page
 @endsection
 
 @section('style')
@@ -28,6 +28,9 @@
     display:flex;
     justify-content: end;
     align-items:center;
+    }
+    form {
+        display:flex;
     }
     main {
     display:flex;
@@ -55,8 +58,18 @@
     <div class="row my-5">
         <div class="col-md-12">
             <div class="search-area">
-                <input type="text" class="form-control w-25" placeholder="Chercher Apprenant">
+                <input type="text" class="form-control w-25" placeholder="Search Here">
             </div>
+            @if (Session::has('Stored'))
+                <div class="alert alert-success">
+                    {{ Session::get('Stored') }}
+                </div>
+            @endif
+            @if (Session::has('UnStored'))
+                <div class="alert alert-warning">
+                    {{ Session::get('UnStored') }}
+                </div>
+            @endif
             @foreach ($infos as $apprenant)
                 <main>
                     {{-- <div>{{ $apprenant->id }}</div> --}}
@@ -64,12 +77,12 @@
                     {{-- <label for="">{{ $value->nom . ' ' . $value->prenom }}</label> --}}
                     {{-- <a class="a" value="{{ $value->id }}" href="">+</a>
                     <a class="a" style="cursor: pointer;">-</a> --}}
-                    <form action="/assigner" method="post">
+                    <form action="{{ route('store') }}" method="post">
                         @csrf
                         <input type="hidden" value="{{ $apprenant->id }}" name="apprenant_id">
                         <input type="hidden" value="{{ $brieff->id }}" name="brief_id">
                         <input class="a" type="submit" value="+">
-                        <div class="a pt-1">-</div>
+                        <div class="a pt-1" type="submit" value="-">-</div>
                     </form>
                 </main>
             @endforeach
@@ -77,7 +90,7 @@
     </div>
     <input type="hidden">
 
-    <a href="/gestion_briefs" class="text-success d-flex justify-content-center">Retourner</a>
+    <a href="/gestion_briefs" class="text-success d-flex justify-content-center">Back Home</a>
 @endsection
 
 

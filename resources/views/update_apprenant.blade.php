@@ -30,39 +30,46 @@
         <div class="col-md-6 offset-3">
             <div class="card">
                 <div class="card-header bg-dark text-white">
-                    <span class="material-icons">new_label</span>&nbsp;Add Brief
+                    <span class="material-icons">new_label</span>&nbsp;Update Apprenant
                 </div>
                 <div class="card-body">
-                    @if (Session::has('Brief_created'))
+                    @if (Session::has('apprennat_updated'))
                         <div class="alert alert-success">
-                            {{ Session::get('Brief_created') }}
+                            {{ Session::get('apprennat_updated') }}
                         </div>
                     @endif
-                    <form action="{{ route('brief.submit') }}" method="POST">
+                    <form action="/edit_apprenant/{{ $apprenantUp->id }}" method="POST">
                         @csrf
                         <div class="form-group">
-                            <label for="nom_du_brief">Brief's Name</label>
-                            <input type="text" name="nom_du_brief" id="nom_du_brief" class="form-control">
+                            <label for="prenom">Last Name <span style="color:red;">*</span></label>
+                            <input type="text" name="prenom" id="prenom" value="{{ $apprenantUp->prenom }}" class="form-control">
                         </div>
-                        @error('nom_du_brief')
+                        @error('prenom')
                             <div class="alert alert-danger mt-2">{{ $message }}</div>
                         @enderror
                         <div class="form-group">
-                            <label for="Date_heure_livraison">Date_heure_livraison</label>
-                            <input type="datetime-local" name="Date_heure_livraison" id="Date_heure_livraison" class="form-control">
+                            <label for="nom">First Name <span style="color:red;">*</span></label>
+                            <input type="text" name="nom" id="nom" value="{{ $apprenantUp->nom }}" class="form-control">
                         </div>
-                        @error('Date_heure_livraison')
+                        @error('nom')
                             <div class="alert alert-danger mt-2">{{ $message }}</div>
                         @enderror
                         <div class="form-group">
-                            <label for="Date_heure_recuperation">Date_heure_recuperation</label>
-                            <input type="datetime-local" name="Date_heure_recuperation" id="Date_heure_recuperation" class="form-control">
+                            <label for="email">Email <span style="color:red;">*</span></label>
+                            <input type="text" name="email" id="email" value="{{ $apprenantUp->email }}" class="form-control">
                         </div>
-                        @error('Date_heure_recuperation')
+                        @error('email')
                             <div class="alert alert-danger mt-2">{{ $message }}</div>
                         @enderror
-                        <button type="submit" class="btn mt-3 btn-primary w-100">Send</button>
-                        <a href="{{ route('brief.get') }}" class="btn btn-dark w-100 mt-2">Back</a>
+                        <div class="form-group">
+                            <label for="id_promotion">Choose a Promotion <span style="color:red;">*</span></label>
+                            <input type="text" name="id_promotion" value="{{ $apprenantUp->id_promotion }}" id="id_promotion" class="form-control">
+                        </div>
+                        @error('id_promotion')
+                            <div class="alert alert-danger mt-2">{{ $message }}</div>
+                        @enderror
+                        <button type="submit" class="btn mt-3 btn-success w-100">Update</button>
+                        <a href="/" class="btn btn-dark w-100 mt-2">Back</a>
                     </form>
                 </div>
             </div>

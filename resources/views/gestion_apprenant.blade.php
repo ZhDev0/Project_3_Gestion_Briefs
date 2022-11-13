@@ -14,6 +14,7 @@
 }
     {{-- Global Styles  --}}
 
+
     a {
     text-decoration: none;
     }
@@ -74,33 +75,41 @@
     <div class="row my-4">
         <div class="col-md-12">
             <nav>
-                <h1 class="d-flex justify-content-center align-items-center">Modifier Promotion</h1>
+                <h1 class="d-flex justify-content-center align-items-center text-dark">Current Promotion</h1>
                 <div class="update-promotion-name">
-                    <h4>Nom De La Promotion&nbsp&nbsp&nbsp</h4>
-                    <input type="text" class="text-primary" placeholder="Promotion X">
-                    <a href="#" class="text-success">&nbsp&nbspModifier</a>
+                    <h4 class="d-flex justify-content-center align-items-center text-dark">Promotion's Name&nbsp&nbsp&nbsp</h4>
+                    <form action="" method="POST">
+                        <input type="text" name="nom_promotion" class="text-primary w-100 d-flex justify-content-center align-items-center" value="&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  {{ $promotion->nom_promotion }}">
+                        {{-- <input type="submit" value="Modifier" class="text-success bg-white"> --}}
+                    </form>
                 </div>
                 <br>
-                <div class="assigned-briefs d-flex justify-content-center align-items-center">
+                {{-- <div class="assigned-briefs d-flex justify-content-center align-items-center">
                     <h4>Briefs assignes a la promotion&nbsp&nbsp&nbsp</h4>
                     <h5 class="text-primary">Briefs 2&nbsp&nbsp&nbsp</h5>
                     <h5 class="text-primary">Briefs 3</h5>
-                </div>
+                </div> --}}
             </nav>
+            @if (Session::has('Apprenant_deleted'))
+                <div class="alert alert-danger">
+                    {{ Session::get('Apprenant_deleted') }}
+                </div>
+            @endif
             <div class="middle-nav">
                 <ul>
-                    <li><a href="{{ route('apprenant.add') }}" class="btn btn-primary mt-3">Ajouter Apprenant</a></li>
+                    <li><a href="{{ route('apprenant.add') }}" class="btn btn-primary mt-3">Add Student</a></li>
                 </ul>
-                <form action="" method="POST">
-                    <input type="text" class="form-control" placeholder="Chercher Promotion">
-                </form>
+                <div class="form-group">
+                    <input type="text" style="background-color: transparent;"id="searcha" name="searcha" class="form-control" placeholder="Search Here">
+                </div>
             </div>
-            <main>
+
+            <main id="tbodyy">
                 @foreach ($apprenant as $value)
                     <div class="main-content">
                         <div class="text-dark">{{ $value->prenom . " " . $value->nom }}</div>
-                        <a href="/delete_apprenant/{{ $value->id }}" class="text-danger">Supprimer</a>
-                        <a href="" class="text-success">Modifier</a>
+                        <a href="/delete_apprenant/{{ $value->id }}" class="text-danger">Delete</a>
+                        <a href="/edit_apprenant/{{ $value->id }}" class="text-success">Update</a>
                     </div>
                 @endforeach
             </main>
@@ -108,7 +117,7 @@
     </div>
     {{-- <div class="d-flex flex-column justify-content-center align-items-center"> --}}
         {{ $apprenant->links() }}
-        <a href="{{ route('promotion.get') }}" class="text-success d-flex justify-content-center align-items-center mt-5">Retourner</a>
+        <a href="{{ route('promotion.get') }}" class="text-success d-flex justify-content-center align-items-center mt-5">Back Home</a>
     {{-- </div> --}}
 @endsection
 
